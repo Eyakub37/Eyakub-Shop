@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eyakub Shop</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,sans-serif;
+  background:#f6f7fb;
+  color:#222;
+}
+header{
+  background:#111827;
+  color:white;
+  padding:18px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.logo{font-size:25px;font-weight:bold}
+.logo span{color:#22c55e}
+nav button{
+  background:none;
+  border:0;
+  color:white;
+  margin:5px;
+  font-size:15px;
+  cursor:pointer;
+}
+.hero{
+  background:linear-gradient(135deg,#111827,#2563eb);
+  color:white;
+  padding:55px 5%;
+  text-align:center;
+}
+.hero h1{font-size:38px;margin-bottom:12px}
+.hero p{font-size:18px;margin-bottom:22px}
+.btn{
+  background:#22c55e;
+  border:0;
+  padding:12px 20px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
+.container{width:90%;max-width:1200px;margin:30px auto}
+.title{text-align:center;margin-bottom:25px}
+.categories{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-bottom:30px;
+}
+.cat{
+  background:white;
+  border:1px solid #ddd;
+  padding:10px 18px;
+  border-radius:30px;
+  cursor:pointer;
+}
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:20px;
+}
+.card{
+  background:white;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 3px 12px #00000012;
+}
+.card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+.card-body{padding:15px}
+.card h3{margin-bottom:8px}
+.price{
+  color:#16a34a;
+  font-size:20px;
+  font-weight:bold;
+  margin:10px 0;
+}
+.card button{
+  width:100%;
+  padding:10px;
+  border:0;
+  background:#111827;
+  color:white;
+  border-radius:7px;
+  cursor:pointer;
+}
+.admin{
+  display:none;
+  background:white;
+  padding:25px;
+  border-radius:12px;
+  margin-top:30px;
+}
+.admin input,.admin select{
+  width:100%;
+  padding:12px;
+  margin:7px 0 14px;
+  border:1px solid #ddd;
+  border-radius:7px;
+}
+.admin-product{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px;
+  border-bottom:1px solid #ddd;
+}
+.delete{
+  background:#ef4444!important;
+  width:auto!important;
+  padding:8px 14px!important;
+}
+.cart{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  background:#22c55e;
+  color:#111;
+  padding:14px 18px;
+  border-radius:50px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 5px 20px #0004;
+}
+footer{
+  margin-top:50px;
+  padding:30px;
+  background:#111827;
+  color:white;
+  text-align:center;
+}
+@media(max-width:600px){
+ .hero h1{font-size:29px}
+ header{flex-direction:column}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Eyakub <span>Shop</span></div>
+  <nav>
+    <button onclick="showHome()">Home</button>
+    <button onclick="showAdmin()">Admin Panel</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Welcome to Eyakub Shop</h1>
+  <p>ছেলেদের জুতা ও লেডিস ব্যাগ — সেরা দামে</p>
+  <button class="btn" onclick="document.getElementById('products').scrollIntoView()">Shop Now</button>
+</section>
+
+<div class="container">
+
+  <h2 class="title">আমাদের ক্যাটাগরি</h2>
+
+  <div class="categories">
+    <button class="cat" onclick="filterProducts('all')">সব</button>
+    <button class="cat" onclick="filterProducts('জুতা')">ছেলেদের জুতা</button>
+    <button class="cat" onclick="filterProducts('ব্যাগ')">লেডিস ব্যাগ</button>
+  </div>
+
+  <h2 class="title" id="products">Products</h2>
+  <div class="products" id="productList"></div>
+
+  <div class="admin" id="adminPanel">
+
+    <h2>⚙️ Eyakub Shop Admin Panel</h2>
+    <br>
+
+    <h3>নতুন Product যোগ করুন</h3>
+
+    <input id="pname" placeholder="Product name">
+    <input id="pprice" type="number" placeholder="Price">
+    
+    <select id="pcat">
+      <option value="জুতা">ছেলেদের জুতা</option>
+      <option value="ব্যাগ">লেডিস ব্যাগ</option>
+    </select>
+
+    <input id="pimage" placeholder="Product image URL">
+
+    <button class="btn" onclick="addProduct()">+ Product Add করুন</button>
+
+    <br><br>
+    <h3>Products Manage করুন</h3>
+    <div id="adminProducts"></div>
+
+  </div>
+
+</div>
+
+<div class="cart" onclick="viewCart()">🛒 Cart (<span id="cartCount">0</span>)</div>
+
+<footer>
+  <h3>Eyakub Shop</h3>
+  <p>আপনার বিশ্বস্ত Online Shopping Store</p>
+  <p>© 2026 Eyakub Shop</p>
+</footer>
+
+<script>
+
+let products = JSON.parse(localStorage.getItem("eyakub_products")) || [
+  {
+    id:1,
+    name:"Premium Men's Shoe",
+    price:1200,
+    category:"জুতা",
+    image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600"
+  },
+  {
+    id:2,
+    name:"Ladies Fashion Bag",
+    price:950,
+    category:"ব্যাগ",
+    image:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600"
+  }
+];
+
+let cart = JSON.parse(localStorage.getItem("eyakub_cart")) || [];
+
+function saveProducts(){
+  localStorage.setItem("eyakub_products",JSON.stringify(products));
+}
+
+function renderProducts(list=products){
+
+  const box=document.getElementById("productList");
+
+  if(list.length===0){
+    box.innerHTML="<p>কোনো Product পাওয়া যায়নি।</p>";
+    return;
+  }
+
+  box.innerHTML=list.map(p=>`
+
+    <div class="card">
+
+      <img src="${p.image}" alt="${p.name}">
+
+      <div class="card-body">
+
+        <h3>${p.name}</h3>
+
+        <small>${p.category}</small>
+
+        <div class="price">৳ ${p.price}</div>
+
+        <button onclick="addCart(${p.id})">
+          🛒 Add to Cart
+        </button>
+
+      </div>
+
+    </div>
+
+  `).join("");
+}
+
+function filterProducts(category){
+
+  if(category==="all"){
+    renderProducts(products);
+  }else{
+    renderProducts(
+      products.filter(p=>p.category===category)
+    );
+  }
+}
+
+function addProduct(){
+
+  const name=document.getElementById("pname").value.trim();
+  const price=document.getElementById("pprice").value;
+  const category=document.getElementById("pcat").value;
+  const image=document.getElementById("pimage").value.trim();
+
+  if(!name || !price || !image){
+    alert("সব তথ্য পূরণ করুন");
+    return;
+  }
+
+  const product={
+    id:Date.now(),
+    name:name,
+    price:Number(price),
+    category:category,
+    image:image
+  };
+
+  products.push(product);
+  saveProducts();
+
+  document.getElementById("pname").value="";
+  document.getElementById("pprice").value="";
+  document.getElementById("pimage").value="";
+
+  renderProducts();
+  renderAdmin();
+
+  alert("Product সফলভাবে যোগ হয়েছে!");
+}
+
+function deleteProduct(id){
+
+  if(confirm("এই Product Delete করতে চান?")){
+
+    products=products.filter(p=>p.id!==id);
+
+    saveProducts();
+    renderProducts();
+    renderAdmin();
+
+  }
+}
+
+function renderAdmin(){
+
+  const box=document.getElementById("adminProducts");
+
+  box.innerHTML=products.map(p=>`
+
+    <div class="admin-product">
+
+      <span>
+        <b>${p.name}</b>
+        <br>
+        ৳ ${p.price}
+      </span>
+
+      <button class="delete"
+        onclick="deleteProduct(${p.id})">
+        Delete
+      </button>
+
+    </div>
+
+  `).join("");
+}
+
+function showAdmin(){
+
+  const password=prompt("Admin Password দিন:");
+
+  if(password==="1234"){
+
+    document.getElementById("adminPanel").style.display="block";
+    renderAdmin();
+
+    document.getElementById("adminPanel")
+      .scrollIntoView();
+
+  }else{
+
+    alert("ভুল Password!");
+
+  }
+}
+
+function showHome(){
+
+  document.getElementById("adminPanel").style.display="none";
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+function addCart(id){
+
+  const product=products.find(p=>p.id===id);
+
+  cart.push(product);
+
+  localStorage.setItem(
+    "eyakub_cart",
+    JSON.stringify(cart)
+  );
+
+  updateCart();
+
+  alert("Cart-এ যোগ হয়েছে!");
+
+}
+
+function updateCart(){
+
+  document.getElementById("cartCount").innerText=cart.length;
+
+}
+
+function viewCart(){
+
+  if(cart.length===0){
+
+    alert("আপনার Cart খালি!");
+
+    return;
+
+  }
+
+  let total=cart.reduce(
+    (sum,p)=>sum+p.price,0
+  );
+
+  alert(
+    "Cart Items: "+cart.length+
+    "\nTotal: ৳ "+total+
+    "\n\nCheckout system পরের ধাপে যোগ করবো।"
+  );
+
+}
+
+renderProducts();
+updateCart();
+
+</script>
+
+</body>
+  </html>
