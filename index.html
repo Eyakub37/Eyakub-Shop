@@ -1,445 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Eyakub Shop - Online Store">
-<title>Eyakub Shop — Online Store</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Eyakub Fashion — Men’s Shoes</title>
 <style>
-:root{--green:#16c55a;--green2:#0b8f43;--dark:#071b2a;--bg:#f5f7f9;--text:#13212d;--muted:#667085;--line:#e4e7ec;--card:#fff;--red:#e53935}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,"Noto Sans Bengali",sans-serif;background:var(--bg);color:var(--text)}
-button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}
-.top{background:var(--dark);color:#fff;position:sticky;top:0;z-index:50}
-.topin{max-width:1250px;margin:auto;padding:12px 18px;display:flex;gap:18px;align-items:center}
-.logo{font-size:28px;font-weight:900;white-space:nowrap}.logo span{color:#35ee79}
-.search{display:flex;flex:1;max-width:600px;margin:auto}.search input{width:100%;padding:13px 16px;border:0;border-radius:10px 0 0 10px;outline:0}
-.search button{width:55px;border:0;background:var(--green);color:#fff;border-radius:0 10px 10px 0}
-.actions{display:flex;gap:12px;align-items:center}.actions button,.actions a{background:none;border:0;color:#fff}
-.cart{position:relative}.count{position:absolute;top:-9px;right:-10px;background:#ef3340;border-radius:50%;font-size:11px;padding:3px 6px}
-.nav{background:#fff;border-bottom:1px solid var(--line);overflow:auto;white-space:nowrap}.navin{max-width:1250px;margin:auto;display:flex;gap:22px;padding:13px 18px}
-.nav a:hover{color:var(--green2)}
-.wrap{max-width:1250px;margin:auto;padding:0 18px}
-.hero{margin:18px 0;border-radius:18px;min-height:330px;padding:45px 7%;display:flex;align-items:center;overflow:hidden;color:#fff;background:linear-gradient(120deg,#052d28,#0b8f50 55%,#0872c9)}
-.hero h1{font-size:45px;line-height:1.08;margin:12px 0}.hero h1 span{color:#35ee79}.hero p{font-size:20px;margin-bottom:22px}
-.hero-art{margin-left:auto;font-size:150px;filter:drop-shadow(0 20px 20px #0005)}.pill{display:inline-block;background:var(--green);padding:8px 15px;border-radius:22px;font-weight:800}
-.btn{border:0;background:var(--green);color:#fff;padding:12px 20px;border-radius:9px;font-weight:800}
-.cats{display:grid;grid-template-columns:repeat(8,1fr);gap:12px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}
-.cat{border:0;background:#fff;padding:13px 5px;border-radius:13px;text-align:center}.cat:hover,.cat.active{background:#ecfbf2}.cat .ico{display:block;font-size:32px;margin-bottom:6px}
-.features{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0 28px}.feature{background:#eafaf1;border-radius:12px;padding:16px;text-align:center}.feature b{display:block;margin:5px 0}.muted{color:var(--muted);font-size:13px}
-.section{display:flex;justify-content:space-between;align-items:center;margin:22px 0 13px}.section h2{font-size:27px}.tools select{padding:8px;border:1px solid var(--line);border-radius:8px;background:#fff}
-.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;min-height:100px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 3px 12px #0000000a}
-.pic{height:190px;background:#eef2f4;position:relative;overflow:hidden}.pic img{width:100%;height:100%;object-fit:cover;display:block}
-.discount{position:absolute;top:9px;left:9px;background:#ed1c24;color:#fff;border-radius:6px;padding:4px 7px;font-size:12px;font-weight:800}
-.stock{position:absolute;top:9px;right:9px;background:#fff;border-radius:6px;padding:4px 7px;font-size:11px}
-.body{padding:12px}.body h3{font-size:15px;min-height:38px;margin:8px 0}.price{font-size:19px;font-weight:900;color:#d9252a}
-.old{text-decoration:line-through;color:#999;font-size:12px;margin-left:4px}.rating{font-size:13px;margin:7px 0}.row{display:flex;gap:7px}
-.row button{flex:1}.details{background:#fff;border:1px solid var(--line);color:var(--dark);padding:9px;border-radius:7px;font-weight:700}
-.add{background:#0ca950;color:#fff;border:0;padding:10px;border-radius:7px;font-weight:800;width:100%;margin-top:8px}.add:disabled{background:#aaa;cursor:not-allowed}
-.bannerrow{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0}.banner{padding:28px;border-radius:15px;color:#fff;min-height:150px}.men{background:linear-gradient(120deg,#087b4b,#0a4935)}.women{background:linear-gradient(120deg,#f7a4b4,#df5275)}
-.banner h3{font-size:25px;margin-bottom:7px}
-.footer{background:var(--dark);color:#fff;margin-top:40px;padding:35px 5%;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:25px}
-.footer p,.footer a{display:block;color:#cbd5df;margin:7px 0;font-size:14px}.social a{display:inline-block;margin-right:10px}
-.overlay{position:fixed;inset:0;background:#0008;z-index:100;display:none;padding:15px}.overlay.show{display:flex;align-items:center;justify-content:center}
-.panel{background:#fff;border-radius:15px;width:min(650px,100%);max-height:94vh;overflow:auto;padding:22px}.drawer{position:absolute;right:0;top:0;height:100%;width:min(470px,96%);background:#fff;padding:22px;overflow:auto}
-.head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.close{border:0;background:#eee;border-radius:8px;padding:8px 12px}
-.cartitem{display:grid;grid-template-columns:65px 1fr auto;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}
-.cartitem img{width:65px;height:65px;object-fit:cover;border-radius:8px}.qty{display:flex;gap:7px;align-items:center;margin-top:7px}.qty button{width:27px;height:27px;border:1px solid #ddd;background:#fff;border-radius:5px}
-.total{font-size:21px;font-weight:900;margin:18px 0}.checkout,.wa{width:100%;border:0;background:var(--green);color:#fff;padding:13px;border-radius:9px;font-weight:900}
-.field{margin:11px 0}.field label{display:block;font-weight:800;margin-bottom:6px}.field input,.field textarea,.field select{width:100%;padding:11px;border:1px solid #d6dbe1;border-radius:8px;outline:0}.field textarea{min-height:75px}
-.notice{background:#eefaf3;padding:10px;border-radius:8px;font-size:13px;margin-bottom:10px}.product-detail{display:grid;grid-template-columns:1fr 1fr;gap:20px}.product-detail img{width:100%;height:330px;object-fit:cover;border-radius:12px;background:#f2f4f7}
-.bigprice{font-size:28px;color:#d9252a;font-weight:900;margin:12px 0}.stockbox{background:#eefaf3;padding:10px;border-radius:8px;margin:10px 0}
-.admin-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat{background:#eefaf3;border-radius:10px;padding:15px;text-align:center}.stat b{display:block;font-size:25px}
-.order{border:1px solid var(--line);border-radius:10px;padding:12px;margin:10px 0}.order h4{margin-bottom:6px}.status{display:inline-block;background:#fff4cf;padding:4px 8px;border-radius:6px;font-size:12px}
-.empty{text-align:center;padding:35px;color:var(--muted);grid-column:1/-1}.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:#071b2a;color:#fff;padding:12px 18px;border-radius:10px;display:none;z-index:300}
-.toast.show{display:block}
-@media(max-width:950px){.grid{grid-template-columns:repeat(3,1fr)}.cats{grid-template-columns:repeat(4,1fr)}.features{grid-template-columns:repeat(2,1fr)}.footer{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.topin{flex-wrap:wrap}.logo{font-size:22px}.search{order:3;flex-basis:100%}.hero{min-height:270px;padding:30px 22px}.hero h1{font-size:31px}.hero-art{font-size:75px}.grid{grid-template-columns:repeat(2,1fr)}.pic{height:145px}.bannerrow,.product-detail{grid-template-columns:1fr}.footer{grid-template-columns:1fr}.cats{padding:8px}.cat{font-size:12px}.cat .ico{font-size:25px}.admin-grid{grid-template-columns:1fr 1fr}.actions a{display:none}}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;color:#151515;background:#fafafa}
+.top{background:#111;color:#fff;text-align:center;padding:8px;font-size:13px}.nav{display:flex;align-items:center;justify-content:space-between;padding:15px 5%;background:#fff;position:sticky;top:0;z-index:5;box-shadow:0 2px 10px #0001}
+.logo{font-weight:800;font-size:22px}.nav a{margin:0 8px;color:#111;text-decoration:none}.cart{background:#111;color:#fff;border:0;border-radius:22px;padding:10px 15px}
+.hero{padding:55px 5%;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;background:#f0f0ee}.hero h1{font-size:52px;margin:8px 0}.hero p{font-size:18px;color:#555}.btn{display:inline-block;background:#111;color:#fff;padding:13px 20px;border-radius:8px;text-decoration:none;border:0;cursor:pointer}
+.heroimg{min-height:320px;border-radius:20px;background:linear-gradient(135deg,#e9e9e9,#cfcfcf);display:flex;align-items:center;justify-content:center;font-size:90px}
+section{padding:45px 5%}.title{text-align:center;margin-bottom:25px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#fff;border:1px solid #eee;border-radius:14px;overflow:hidden;box-shadow:0 3px 12px #0000000b}.pic{height:190px;background:#eee;display:flex;align-items:center;justify-content:center;font-size:70px}.info{padding:15px}.price{font-weight:800;font-size:19px}.small{color:#777;font-size:13px}.buy{width:100%;margin-top:10px}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.feature{background:#fff;padding:20px;border-radius:12px;border:1px solid #eee}
+footer{background:#111;color:#fff;padding:35px 5%;text-align:center}
+.modal{display:none;position:fixed;inset:0;background:#0008;z-index:20;padding:20px;overflow:auto}.box{background:#fff;max-width:650px;margin:40px auto;padding:25px;border-radius:15px}.row{display:flex;justify-content:space-between;margin:10px 0}.qty button{padding:4px 10px}.form input,.form textarea,.form select{width:100%;padding:12px;margin:6px 0 12px;border:1px solid #ddd;border-radius:8px}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.hero h1{font-size:40px}.grid{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:1fr}.nav a{display:none}}
 </style>
 </head>
 <body>
+<div class="top">🚚 Delivery across Bangladesh • 💳 bKash • Nagad • 💵 Cash on Delivery</div>
+<nav class="nav"><div class="logo">EYAKUB FASHION</div><div><a href="#shop">Shop</a><a href="#about">About</a><a href="#contact">Contact</a><button class="cart" onclick="openCart()">🛒 Cart (<span id="count">0</span>)</button></div></nav>
+<header class="hero"><div><div class="small">STYLE THAT SPEAKS</div><h1>Step Into<br>Your Style.</h1><p>Premium men’s shoes at Eyakub Fashion — stylish, comfortable and made for everyday Bangladesh.</p><a class="btn" href="#shop">Shop Now</a></div><div class="heroimg">👟</div></header>
 
-<header class="top">
-  <div class="topin">
-    <a class="logo" href="#home">🛒 Eyakub <span>Shop</span></a>
-    <div class="search"><input id="search" placeholder="পণ্য খুঁজুন..." autocomplete="off"><button onclick="render()">🔍</button></div>
-    <div class="actions">
-      <button onclick="openAdmin()">👤 Admin</button>
-      <a href="https://www.facebook.com/profile.php?id=61594226919156" target="_blank" rel="noopener">Facebook</a>
-      <button class="cart" onclick="openCart()">🛒 Cart <span id="count" class="count">0</span></button>
-    </div>
-  </div>
-</header>
+<section id="shop"><div class="title"><h2>Men’s Shoes Collection</h2><p>ছেলেদের জন্য স্টাইলিশ ও আরামদায়ক জুতা</p></div><div id="products" class="grid"></div></section>
+<section><div class="features"><div class="feature">🚚 <b>Fast Delivery</b><br><span class="small">Delivery across Bangladesh</span></div><div class="feature">💵 <b>Cash on Delivery</b><br><span class="small">Pay when you receive</span></div><div class="feature">🔄 <b>Easy Support</b><br><span class="small">Contact us for help</span></div></div></section>
+<section id="about"><div class="title"><h2>About Eyakub Fashion</h2><p>Quality fashion products, simple ordering and dependable delivery.</p></div></section>
+<section id="contact"><div class="title"><h2>Contact</h2><p>Phone: <b>017XXXXXXXX</b> &nbsp; | &nbsp; Facebook: Eyakub Fashion</p></div></section>
+<footer>© 2026 Eyakub Fashion • Men’s Shoes</footer>
 
-<nav class="nav"><div class="navin" id="navcats"></div></nav>
-
-<main id="home" class="wrap">
-  <section class="hero">
-    <div>
-      <span class="pill">Special Offer</span>
-      <h1>স্টাইলিশ পণ্য<br><span>সেরা দামে!</span></h1>
-      <p>আপনার পছন্দ, আমাদের অঙ্গীকার — মানসম্মত পণ্য ও সহজ অর্ডার</p>
-      <button class="btn" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Now →</button>
-    </div>
-    <div class="hero-art">🛍️</div>
-  </section>
-
-  <section class="cats" id="cats"></section>
-
-  <section class="features">
-    <div class="feature">🚚<b>সারা দেশে ডেলিভারি</b><span class="muted">দ্রুত ও নিরাপদ</span></div>
-    <div class="feature">🛡️<b>নিরাপদ অর্ডার</b><span class="muted">WhatsApp কনফার্মেশন</span></div>
-    <div class="feature">🔄<b>সহজ রিটার্ন</b><span class="muted">শর্ত প্রযোজ্য</span></div>
-    <div class="feature">🎧<b>সাপোর্ট</b><span class="muted">WhatsApp-এ যোগাযোগ</span></div>
-  </section>
-
-  <div class="section" id="products">
-    <h2>🔥 <span id="productTitle">৩০০টি পণ্য</span></h2>
-    <div class="tools">
-      <select id="sort" onchange="render()">
-        <option value="default">সাজানো</option>
-        <option value="low">দাম: কম → বেশি</option>
-        <option value="high">দাম: বেশি → কম</option>
-      </select>
-    </div>
-  </div>
-  <section class="grid" id="grid"></section>
-
-  <section class="bannerrow">
-    <div class="banner men">
-      <h3>Men's Collection</h3><p>ছেলেদের জুতা — স্টাইল + কমফোর্ট</p>
-      <button class="btn" onclick="setCat('ছেলেদের জুতা')">Shop Now →</button>
-    </div>
-    <div class="banner women">
-      <h3>Ladies Collection</h3><p>লেডিস ব্যাগ — প্রতিদিনের স্টাইল</p>
-      <button class="btn" onclick="setCat('লেডিস ব্যাগ')">Shop Now →</button>
-    </div>
-  </section>
-</main>
-
-<footer class="footer">
-  <div><div class="logo">Eyakub <span>Shop</span></div><p>Better Products | Better Life</p><p>ব্যবসার ঠিকানা: ঢাকা, বাংলাদেশ</p><p>বাংলাদেশজুড়ে কুরিয়ার ডেলিভারি</p></div>
-  <div><h3>সহায়তা</h3><a href="https://wa.me/966567225245" target="_blank" rel="noopener">WhatsApp যোগাযোগ</a><a href="#products">পণ্যসমূহ</a><a href="#">ডেলিভারি তথ্য</a></div>
-  <div><h3>গুরুত্বপূর্ণ</h3><a href="#home">Home</a><a href="#products">Products</a><a href="#" onclick="openAdmin();return false">Admin Panel</a></div>
-  <div class="social"><h3>সোশ্যাল মিডিয়া</h3><a href="https://www.facebook.com/profile.php?id=61594226919156" target="_blank" rel="noopener">Facebook Page</a><a href="https://wa.me/966567225245" target="_blank" rel="noopener">WhatsApp</a><p>© 2026 Eyakub Shop. All rights reserved.</p></div>
-</footer>
-
-<div class="overlay" id="cartOverlay" onclick="if(event.target===this)closeCart()">
-  <div class="drawer">
-    <div class="head"><h2>🛒 আপনার Cart</h2><button class="close" onclick="closeCart()">✕</button></div>
-    <div id="cartItems"></div><div class="total">মোট: ﷼ <span id="cartTotal">0</span></div>
-    <button class="checkout" onclick="openCheckout()">অর্ডার সম্পন্ন করুন → WhatsApp</button>
-  </div>
-</div>
-
-<div class="overlay" id="checkoutOverlay">
-  <form class="panel" onsubmit="submitOrder(event)">
-    <div class="head"><h2>📦 অর্ডার তথ্য</h2><button type="button" class="close" onclick="closeCheckout()">✕</button></div>
-    <div class="notice">অর্ডার ID তৈরি হবে এবং WhatsApp-এ অর্ডারের মেসেজ খুলবে।</div>
-    <div class="field"><label>আপনার নাম *</label><input id="name" required></div>
-    <div class="field"><label>মোবাইল নম্বর *</label><input id="phone" required type="tel" placeholder="+966 / +880"></div>
-    <div class="field"><label>শহর / জেলা *</label><input id="city" required placeholder="যেমন: ঢাকা"></div>
-    <div class="field"><label>সম্পূর্ণ ঠিকানা *</label><textarea id="address" required placeholder="বাড়ি, রাস্তা, এলাকা..."></textarea></div>
-    <div class="field"><label>পেমেন্ট</label><select id="payment"><option>Cash on Delivery</option><option>Bank / Online Payment</option></select></div>
-    <div class="field"><label>অতিরিক্ত নোট</label><textarea id="note" placeholder="রং, সাইজ বা অন্য নির্দেশনা"></textarea></div>
-    <button class="wa" type="submit">📲 WhatsApp-এ অর্ডার পাঠান</button>
-  </form>
-</div>
-
-<div class="overlay" id="detailOverlay">
-  <div class="panel"><div class="head"><h2>🛍️ Product Details</h2><button class="close" onclick="closeDetail()">✕</button></div><div id="detail"></div></div>
-</div>
-
-<div class="overlay" id="adminOverlay">
-  <div class="panel"><div class="head"><h2>📊 Admin Panel</h2><button class="close" onclick="closeAdmin()">✕</button></div><div id="adminContent"></div></div>
-</div>
-<div class="toast" id="toast"></div>
+<div id="cartModal" class="modal"><div class="box"><button onclick="closeCart()" style="float:right">✕</button><h2>Your Cart</h2><div id="cartItems"></div><hr><div class="row"><b>Total</b><b>৳<span id="total">0</span></b></div><button class="btn" onclick="checkout()">Checkout</button></div></div>
+<div id="checkoutModal" class="modal"><div class="box"><button onclick="closeCheckout()" style="float:right">✕</button><h2>Order Checkout</h2><div class="form">
+<label>Name</label><input id="name" placeholder="আপনার নাম">
+<label>Phone</label><input id="phone" placeholder="01XXXXXXXXX">
+<label>Address</label><textarea id="address" rows="3" placeholder="সম্পূর্ণ ঠিকানা"></textarea>
+<label>Payment</label><select id="payment"><option>Cash on Delivery</option><option>bKash (Merchant Payment)</option><option>Nagad (Merchant Payment)</option></select>
+<div id="payhint" class="small">COD selected — delivery time payment.</div>
+<button class="btn" onclick="placeOrder()">Place Order</button>
+</div></div></div>
 
 <script>
-"use strict";
-
-const WHATSAPP="966567225245";
-const FACEBOOK="https://www.facebook.com/profile.php?id=61594226919156";
-const CART_KEY="eyakub_cart_v5";
-const ORDER_KEY="eyakub_orders_v5";
-
-const images=[
-"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=85",
-"https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=900&q=85",
-"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=85",
-"https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&w=900&q=85",
-"https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85",
-"https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=900&q=85",
-"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=900&q=85",
-"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=85",
-"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=85",
-"https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=900&q=85",
-"https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=900&q=85",
-"https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=900&q=85"
+const products=[
+{id:1,name:"Classic Formal Shoe",price:1590,cat:"Men’s Shoes",emoji:"👞"},
+{id:2,name:"Premium Casual Shoe",price:1790,cat:"Men’s Shoes",emoji:"👞"},
+{id:3,name:"Comfort Loafer",price:1690,cat:"Men’s Shoes",emoji:"👞"},
+{id:4,name:"Classic Leather Shoe",price:2190,cat:"Men’s Shoes",emoji:"👞"},
+{id:5,name:"Sport Sneakers",price:1990,cat:"Men’s Shoes",emoji:"👟"},
+{id:6,name:"Everyday Casual Sneaker",price:1890,cat:"Men’s Shoes",emoji:"👟"}
 ];
-
-const sets=[
-["ছেলেদের জুতা",["Classic Running Sneaker","Air Style Sneaker","Sports Comfort Shoe","Premium Casual Sneaker","Lightweight Walking Shoe","Street Runner","Urban Trainer","Daily Comfort Shoe","Canvas Sneaker","Outdoor Sports Shoe"],"👟",170,390],
-["লেডিস ব্যাগ",["Fashion Handbag","Premium Ladies Bag","Mini Shoulder Bag","Office Tote Bag","Crossbody Bag","Travel Handbag","Classic Tote","Elegant Purse","Party Clutch","Daily Carry Bag"],"👜",110,320],
-["ঘড়ি",["Smart Watch","Men's Classic Watch","Women's Fashion Watch","Digital Sports Watch","Minimal Watch","Leather Strap Watch","Steel Chronograph","Kids Smart Watch","Luxury Style Watch","Everyday Watch"],"⌚",90,450],
-["পোশাক",["Premium T-Shirt","Cotton Shirt","Polo Shirt","Casual Panjabi","Denim Jeans","Cargo Pant","Sports Jersey","Hoodie","Summer Dress","Formal Shirt"],"👕",55,260],
-["ইলেকট্রনিক্স",["Wireless Earbuds","Bluetooth Speaker","Power Bank","USB Fast Charger","Wireless Mouse","Mechanical Keyboard","Laptop Stand","Smart LED Light","Mini Fan","Portable Projector"],"💻",45,650],
-["বিউটি & কেয়ার",["Face Wash","Moisturizer","Sunscreen","Perfume","Hair Serum","Body Lotion","Lip Care","Makeup Kit","Beard Oil","Skin Care Set"],"💄",25,280],
-["হোম & লিভিং",["Storage Box","Bedsheet Set","Bath Towel","Table Lamp","Wall Clock","Kitchen Organizer","Cushion Set","Water Bottle","Laundry Basket","Home Decor"],"🏠",30,300],
-["অ্যাক্সেসরিজ",["Sunglasses","Leather Wallet","Card Holder","Cap","Belt","Key Holder","Travel Pouch","Phone Stand","Cable Organizer","Fashion Bracelet"],"🕶️",20,180],
-["মোবাইল",["Phone Case","Screen Protector","Selfie Stick","Mobile Stand","Fast Cable","Car Phone Holder","OTG Adapter","SIM Tool Kit","Ring Holder","Camera Lens Kit"],"📱",10,160],
-["স্পোর্টস",["Yoga Mat","Gym Gloves","Skipping Rope","Sports Bottle","Football","Training Cone","Fitness Band","Sports Bag","Knee Support","Sports Jersey Pro"],"🏃",25,220]
-];
-
-let products=[];
-let id=1;
-
-sets.forEach((s,si)=>{
-  for(let v=0;v<10;v++){
-    for(let k=0;k<3;k++){
-      const price=Math.round(s[3]+v*7+k*13+(v%3)*11);
-      const old=Math.round(price*(1.18+k*0.04));
-      products.push({
-        id:id++,
-        name:s[1][v]+(k?` ${k+1}`:""),
-        cat:s[0],
-        emoji:s[2],
-        price,old,
-        stock:8+((v*7+k*3+si*5)%58),
-        rating:(4.2+((v+k+si)%8)/10).toFixed(1),
-        reviews:80+v*31+k*17,
-        img:images[(id-2)%images.length],
-        description:`${s[1][v]} — উন্নত মানের ${s[0]} পণ্য। দৈনন্দিন ব্যবহারের জন্য উপযোগী। সাইজ/রং প্রয়োজন হলে অর্ডারের নোটে লিখুন।`
-      });
-    }
-  }
-});
-
-let activeCat="সব";
-let cart=loadJSON(CART_KEY,[]);
-let orders=loadJSON(ORDER_KEY,[]);
-
-function loadJSON(key,fallback){
-  try{const x=JSON.parse(localStorage.getItem(key));return x??fallback}catch(e){return fallback}
-}
-function money(n){return Number(n).toLocaleString("en-US")}
-function esc(s){
-  return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
-}
-function toast(t){
-  const x=document.getElementById("toast");
-  x.textContent=t;x.classList.add("show");
-  clearTimeout(window._toast);window._toast=setTimeout(()=>x.classList.remove("show"),1800);
-}
-function save(){
-  localStorage.setItem(CART_KEY,JSON.stringify(cart));
-  localStorage.setItem(ORDER_KEY,JSON.stringify(orders));
-  updateCount();
-}
-function updateCount(){document.getElementById("count").textContent=cart.reduce((a,x)=>a+x.qty,0)}
-
-const catIcons={"সব":"▦","ছেলেদের জুতা":"👟","লেডিস ব্যাগ":"👜","ঘড়ি":"⌚","পোশাক":"👕","ইলেকট্রনিক্স":"💻","বিউটি & কেয়ার":"💄","হোম & লিভিং":"🏠","অ্যাক্সেসরিজ":"🕶️","মোবাইল":"📱","স্পোর্টস":"🏃"};
-
-function setCat(c){
-  activeCat=c;renderCats();render();
-  document.getElementById("products").scrollIntoView({behavior:"smooth"});
-}
-function renderCats(){
-  const keys=Object.keys(catIcons);
-  document.getElementById("cats").innerHTML=keys.map(c=>
-    `<button class="cat ${activeCat===c?"active":""}" onclick="setCat(${JSON.stringify(c)})"><span class="ico">${catIcons[c]}</span>${c}</button>`
-  ).join("");
-  document.getElementById("navcats").innerHTML=keys.map(c=>
-    `<a href="#products" onclick="setCat(${JSON.stringify(c)});return false">${catIcons[c]} ${c}</a>`
-  ).join("");
-}
-
-function imageFallback(img,emoji,name){
-  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><rect width="100%" height="100%" fill="#eef5f0"/><text x="50%" y="45%" text-anchor="middle" font-size="110">${emoji}</text><text x="50%" y="70%" text-anchor="middle" font-family="Arial" font-size="28" fill="#123">${String(name).slice(0,28)}</text></svg>`;
-  img.src="data:image/svg+xml;charset=UTF-8,"+encodeURIComponent(svg);
-}
-
-function render(){
-  const q=(document.getElementById("search").value||"").toLowerCase().trim();
-  let list=products.filter(p=>
-    (activeCat==="সব"||p.cat===activeCat) &&
-    (!q||p.name.toLowerCase().includes(q)||p.cat.toLowerCase().includes(q))
-  );
-  const s=document.getElementById("sort").value;
-  if(s==="low")list.sort((a,b)=>a.price-b.price);
-  if(s==="high")list.sort((a,b)=>b.price-a.price);
-
-  document.getElementById("productTitle").textContent=
-    activeCat==="সব" ? `${list.length}টি পণ্য` : `${activeCat} — ${list.length}টি`;
-
-  const grid=document.getElementById("grid");
-  if(!list.length){grid.innerHTML='<div class="empty">কোনো পণ্য পাওয়া যায়নি।</div>';return}
-
-  grid.innerHTML=list.map(p=>`
-    <article class="card">
-      <div class="pic">
-        <img loading="lazy" src="${p.img}" alt="${esc(p.name)}" onerror="imageFallback(this,${JSON.stringify(p.emoji)},${JSON.stringify(p.name)})">
-        <span class="discount">-${Math.round((1-p.price/p.old)*100)}%</span>
-        <span class="stock">${p.stock>0?"Stock: "+p.stock:"Out of stock"}</span>
-      </div>
-      <div class="body">
-        <h3>${esc(p.name)}</h3>
-        <div class="price">﷼ ${money(p.price)} <span class="old">﷼ ${money(p.old)}</span></div>
-        <div class="rating">⭐ ${p.rating} (${p.reviews})</div>
-        <div class="row"><button class="details" onclick="openDetail(${p.id})">Details</button></div>
-        <button class="add" ${p.stock<=0?"disabled":""} onclick="add(${p.id})">🛒 কার্টে যোগ করুন</button>
-      </div>
-    </article>
-  `).join("");
-}
-
-function add(pid){
-  const p=products.find(x=>x.id===pid);
-  if(!p||p.stock<=0)return toast("এই পণ্যটি বর্তমানে Stock Out");
-  const x=cart.find(x=>x.id===pid);
-  if(x){if(x.qty>=p.stock)return toast("এতগুলো Stock নেই");x.qty++}
-  else cart.push({id:pid,qty:1});
-  save();openCart();toast("পণ্যটি Cart-এ যোগ হয়েছে");
-}
-function openCart(){document.getElementById("cartOverlay").classList.add("show");renderCart()}
-function closeCart(){document.getElementById("cartOverlay").classList.remove("show")}
-function renderCart(){
-  let total=0;
-  const el=document.getElementById("cartItems");
-  if(!cart.length){el.innerHTML='<div class="empty">আপনার Cart খালি।</div>';document.getElementById("cartTotal").textContent="0";return}
-  el.innerHTML=cart.map(x=>{
-    const p=products.find(y=>y.id===x.id);if(!p)return"";
-    total+=p.price*x.qty;
-    return `<div class="cartitem">
-      <img src="${p.img}" alt="${esc(p.name)}" onerror="imageFallback(this,${JSON.stringify(p.emoji)},${JSON.stringify(p.name)})">
-      <div><b>${esc(p.name)}</b><div>﷼ ${money(p.price)}</div>
-        <div class="qty"><button onclick="chg(${p.id},-1)">−</button><span>${x.qty}</span><button onclick="chg(${p.id},1)">+</button></div>
-      </div>
-      <button class="close" onclick="del(${p.id})">🗑️</button>
-    </div>`;
-  }).join("");
-  document.getElementById("cartTotal").textContent=money(total);
-}
-function chg(pid,d){
-  const x=cart.find(a=>a.id===pid),p=products.find(a=>a.id===pid);if(!x||!p)return;
-  if(d>0&&x.qty>=p.stock)return toast("Stock সীমা শেষ");
-  x.qty+=d;if(x.qty<=0)cart=cart.filter(a=>a.id!==pid);
-  save();renderCart();
-}
-function del(pid){cart=cart.filter(a=>a.id!==pid);save();renderCart()}
-function openCheckout(){if(!cart.length)return toast("আগে Cart-এ পণ্য যোগ করুন");closeCart();document.getElementById("checkoutOverlay").classList.add("show")}
-function closeCheckout(){document.getElementById("checkoutOverlay").classList.remove("show")}
-
-function makeOrderId(){
-  const d=new Date(),z=n=>String(n).padStart(2,"0");
-  return `EY-${d.getFullYear()}${z(d.getMonth()+1)}${z(d.getDate())}-${Math.floor(1000+Math.random()*9000)}`;
-}
-function submitOrder(e){
-  e.preventDefault();
-  if(!cart.length)return toast("Cart খালি");
-
-  const orderId=makeOrderId();
-  const name=document.getElementById("name").value.trim();
-  const phone=document.getElementById("phone").value.trim();
-  const city=document.getElementById("city").value.trim();
-  const address=document.getElementById("address").value.trim();
-  const payment=document.getElementById("payment").value;
-  const note=document.getElementById("note").value.trim();
-
-  let total=0;
-  const lines=cart.map(x=>{
-    const p=products.find(y=>y.id===x.id);
-    total+=p.price*x.qty;
-    return `• ${p.name} | Qty: ${x.qty} | ﷼ ${money(p.price*x.qty)}`;
-  }).join("\n");
-
-  const order={id:orderId,date:new Date().toLocaleString(),name,phone,city,address,payment,note,total,status:"Pending",items:cart.map(x=>({id:x.id,qty:x.qty}))};
-  orders.unshift(order);
-
-  const msg=`🛍️ *Eyakub Shop - NEW ORDER*
-
-🆔 *Order ID:* ${orderId}
-👤 Customer: ${name}
-📱 Phone: ${phone}
-🏙️ City/District: ${city}
-📍 Address: ${address}
-💳 Payment: ${payment}
-
-📦 *Products:*
-${lines}
-
-💰 *TOTAL: ﷼ ${money(total)}*
-📝 Note: ${note||"None"}
-
-📘 Facebook Page: ${FACEBOOK}`;
-
-  cart.forEach(x=>{
-    const p=products.find(y=>y.id===x.id);
-    if(p)p.stock=Math.max(0,p.stock-x.qty);
-  });
-
-  cart=[];save();closeCheckout();render();updateCount();
-  const url=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`;
-  window.open(url,"_blank","noopener");
-  toast(`Order ${orderId} তৈরি হয়েছে`);
-}
-
-function openDetail(pid){
-  const p=products.find(x=>x.id===pid);if(!p)return;
-  document.getElementById("detail").innerHTML=`
-    <div class="product-detail">
-      <img src="${p.img}" alt="${esc(p.name)}" onerror="imageFallback(this,${JSON.stringify(p.emoji)},${JSON.stringify(p.name)})">
-      <div>
-        <h2>${esc(p.name)}</h2>
-        <div class="bigprice">﷼ ${money(p.price)} <span class="old">﷼ ${money(p.old)}</span></div>
-        <div>⭐ ${p.rating} (${p.reviews} reviews)</div>
-        <div class="stockbox">📦 Stock: <b>${p.stock}</b></div>
-        <p style="line-height:1.7;margin:14px 0">${esc(p.description)}</p>
-        <button class="add" ${p.stock<=0?"disabled":""} onclick="add(${p.id});closeDetail()">🛒 কার্টে যোগ করুন</button>
-      </div>
-    </div>`;
-  document.getElementById("detailOverlay").classList.add("show");
-}
-function closeDetail(){document.getElementById("detailOverlay").classList.remove("show")}
-
-function openAdmin(){
-  const pass=prompt("Admin Panel Password লিখুন:");
-  if(pass!=="1234")return toast("ভুল Password");
-  renderAdmin();document.getElementById("adminOverlay").classList.add("show");
-}
-function closeAdmin(){document.getElementById("adminOverlay").classList.remove("show")}
-function renderAdmin(){
-  const total=orders.reduce((a,o)=>a+o.total,0);
-  const pending=orders.filter(o=>o.status==="Pending").length;
-  document.getElementById("adminContent").innerHTML=`
-    <div class="admin-grid">
-      <div class="stat"><b>${orders.length}</b>Orders</div>
-      <div class="stat"><b>${pending}</b>Pending</div>
-      <div class="stat"><b>${products.length}</b>Products</div>
-      <div class="stat"><b>﷼ ${money(total)}</b>Sales</div>
-    </div>
-    <h3 style="margin:18px 0 8px">Recent Orders</h3>
-    ${orders.length?orders.slice(0,20).map(o=>`
-      <div class="order">
-        <h4>🆔 ${esc(o.id)} <span class="status">${esc(o.status)}</span></h4>
-        <div>👤 ${esc(o.name)} · 📱 ${esc(o.phone)}</div>
-        <div>📍 ${esc(o.city)}, ${esc(o.address)}</div>
-        <div>💰 <b>﷼ ${money(o.total)}</b> · ${esc(o.payment)}</div>
-        <small>${esc(o.date)}</small>
-      </div>`).join("")
-      :'<div class="empty">এখনও কোনো Order এই ব্রাউজারে সংরক্ষিত নেই।</div>'}
-    <button class="checkout" style="margin-top:10px" onclick="clearOrders()">সব Local Order মুছুন</button>
-    <p class="muted" style="margin-top:12px">নোট: এটি GitHub Pages-এর static version। Customer order WhatsApp-এ যায় এবং Admin order history এই ব্রাউজারের localStorage-এ থাকে।</p>`;
-}
-function clearOrders(){
-  if(confirm("সব local order মুছে ফেলবেন?")){orders=[];save();renderAdmin()}
-}
-
-document.getElementById("search").addEventListener("input",render);
-renderCats();
-render();
-updateCount();
+let cart=JSON.parse(localStorage.getItem("eyakub_cart")||"[]");
+function save(){localStorage.setItem("eyakub_cart",JSON.stringify(cart));renderCart();document.getElementById("count").textContent=cart.reduce((a,b)=>a+b.qty,0)}
+function renderProducts(){document.getElementById("products").innerHTML=products.map(p=>`<div class="card"><div class="pic">${p.emoji}</div><div class="info"><div class="small">${p.cat}</div><h3>${p.name}</h3><div class="price">৳${p.price}</div><button class="btn buy" onclick="add(${p.id})">Add to Cart</button></div></div>`).join("")}
+function add(id){let x=cart.find(i=>i.id==id);if(x)x.qty++;else cart.push({id,qty:1});save();openCart()}
+function renderCart(){let el=document.getElementById("cartItems");if(!cart.length){el.innerHTML="<p>Cart is empty.</p>";document.getElementById("total").textContent=0;return}let t=0;el.innerHTML=cart.map(i=>{let p=products.find(x=>x.id==i.id);t+=p.price*i.qty;return `<div class="row"><span>${p.name} × ${i.qty}</span><span>৳${p.price*i.qty} <button onclick="chg(${i.id},-1)">−</button><button onclick="chg(${i.id},1)">+</button></span></div>`}).join("");document.getElementById("total").textContent=t}
+function chg(id,n){let x=cart.find(i=>i.id==id);x.qty+=n;if(x.qty<=0)cart=cart.filter(i=>i.id!=id);save()}
+function openCart(){renderCart();document.getElementById("cartModal").style.display="block"} function closeCart(){document.getElementById("cartModal").style.display="none"}
+function checkout(){if(!cart.length)return alert("Cart is empty");closeCart();document.getElementById("checkoutModal").style.display="block"}
+function closeCheckout(){document.getElementById("checkoutModal").style.display="none"}
+document.getElementById("payment").onchange=e=>document.getElementById("payhint").textContent=e.target.value==="Cash on Delivery"?"COD selected — delivery time payment.":"Payment selected. Merchant number/transaction details should be confirmed before live gateway integration.";
+function placeOrder(){let name=document.getElementById("name").value.trim(),phone=document.getElementById("phone").value.trim(),address=document.getElementById("address").value.trim(),payment=document.getElementById("payment").value;if(!name||!phone||!address)return alert("Please fill Name, Phone and Address.");let total=cart.reduce((s,i)=>s+products.find(p=>p.id==i.id).price*i.qty,0);let order={id:"EF"+Date.now().toString().slice(-8),date:new Date().toLocaleString(),name,phone,address,payment,total,items:cart};let orders=JSON.parse(localStorage.getItem("eyakub_orders")||"[]");orders.unshift(order);localStorage.setItem("eyakub_orders",JSON.stringify(orders));cart=[];save();closeCheckout();alert("Order received! Order ID: "+order.id)}
+renderProducts();save();
 </script>
-</body>
-</html>
+</body></html>
