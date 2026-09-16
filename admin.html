@@ -1,58 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eyakub Shop Admin</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
             margin: 0;
             padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
         }
 
         .container {
-            max-width: 500px;
-            margin: 40px auto;
+            max-width: 600px;
+            margin: 30px auto;
             background: white;
             padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
         }
 
         h1 {
             text-align: center;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            margin-top: 0;
         }
 
         label {
             display: block;
             margin-top: 15px;
+            margin-bottom: 6px;
             font-weight: bold;
         }
 
-        input {
+        input,
+        textarea,
+        select {
             width: 100%;
             padding: 12px;
-            margin-top: 6px;
-            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
         }
 
         button {
             width: 100%;
-            padding: 12px;
+            padding: 13px;
             margin-top: 20px;
-            background: black;
-            color: white;
             border: none;
-            border-radius: 6px;
+            border-radius: 7px;
+            background: #111;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
         }
 
-        #message {
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .logout {
+            background: #d32f2f;
+            margin-bottom: 20px;
+        }
+
+        .message {
             text-align: center;
             margin-top: 15px;
             font-weight: bold;
+        }
+
+        #adminPanel {
+            display: none;
+        }
+
+        .product-list {
+            margin-top: 30px;
+        }
+
+        .product-item {
+            padding: 15px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fafafa;
         }
     </style>
 </head>
@@ -63,44 +108,87 @@
 
     <h1>Eyakub Shop Admin</h1>
 
-    <h3>Admin Login</h3>
+    <!-- LOGIN -->
+    <div id="loginPanel">
 
-    <form id="loginForm">
+        <h2>Admin Login</h2>
 
         <label>Username</label>
-        <input type="text" id="username" placeholder="Username" required>
+        <input type="text" id="username" placeholder="Username">
 
         <label>Password</label>
-        <input type="password" id="password" placeholder="Password" required>
+        <input type="password" id="password" placeholder="Password">
 
-        <button type="submit">Login</button>
+        <button onclick="login()">Login</button>
 
-        <div id="message"></div>
+        <div id="loginMessage" class="message"></div>
 
-    </form>
+    </div>
+
+
+    <!-- ADMIN PANEL -->
+    <div id="adminPanel">
+
+        <button class="logout" onclick="logout()">Logout</button>
+
+        <h2>Add New Product</h2>
+
+        <form id="productForm">
+
+            <label>Product Name</label>
+            <input type="text" id="productName" placeholder="Men's Running Shoes" required>
+
+            <label>Category</label>
+            <select id="category" required>
+                <option value="">Select Category</option>
+                <option value="Men's Shoes">Men's Shoes</option>
+                <option value="Women's Shoes">Women's Shoes</option>
+                <option value="Bags">Bags</option>
+                <option value="Clothing">Clothing</option>
+                <option value="Accessories">Accessories</option>
+                <option value="Cosmetics">Cosmetics</option>
+                <option value="Electronics">Electronics</option>
+            </select>
+
+            <label>Price (৳)</label>
+            <input type="number" id="price" placeholder="1500" required>
+
+            <label>Discount Price (৳)</label>
+            <input type="number" id="discountPrice" placeholder="1200">
+
+            <label>Product Image URL</label>
+            <input type="url" id="image" placeholder="https://example.com/shoe.jpg">
+
+            <label>Description</label>
+            <textarea id="description" placeholder="Product details লিখুন..."></textarea>
+
+            <button type="submit">Add Product</button>
+
+        </form>
+
+        <div id="productMessage" class="message"></div>
+
+        <div class="product-list">
+            <h2>Products</h2>
+            <div id="productList"></div>
+        </div>
+
+    </div>
 
 </div>
 
+
 <script>
+
+    // Basic Admin Login
     const ADMIN_USERNAME = "eyakubadmin";
     const ADMIN_PASSWORD = "Eyakub@2026";
 
-    document.getElementById("loginForm").addEventListener("submit", function(event) {
-        event.preventDefault();
+
+    function login() {
 
         const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
-        const message = document.getElementById("message");
+        const message = document.getElementById("loginMessage");
 
-        if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-            message.style.color = "green";
-            message.textContent = "Login Successful!";
-        } else {
-            message.style.color = "red";
-            message.textContent = "Wrong Username or Password!";
-        }
-    });
-</script>
-
-</body>
-</html>
+        if (
