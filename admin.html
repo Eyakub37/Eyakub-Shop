@@ -1,26 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eyakub Shop Admin</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eyakub Shop Admin</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background: black;
+            color: white;
+            border: none;
+            border-radius: 6px;
+        }
+    </style>
 </head>
 
 <body>
 
-<h1>Eyakub Shop Admin Panel</h1>
+<div class="container">
 
-<p>Admin Login</p>
+    <h1>Eyakub Shop Admin</h1>
 
-<form>
-  <label>Username</label><br>
-  <input type="text" placeholder="Username"><br><br>
+    <h3>Admin Login</h3>
 
-  <label>Password</label><br>
-  <input type="password" placeholder="Password"><br><br>
+    <form>
+        <label>Username</label>
+        <input type="text" placeholder="Username">
 
-  <button type="submit">Login</button>
-</form>
+        <label>Password</label>
+        <input type="password" placeholder="Password">
+
+        <button type="submit">Login</button>
+    </form>
+
+</div>
 
 </body>
 </html>
