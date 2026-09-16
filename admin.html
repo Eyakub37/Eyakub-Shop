@@ -1,194 +1,428 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eyakub Shop Admin</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<title>Eyakub Shop Admin</title>
 
-        body {
-            margin: 0;
-            padding: 20px;
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-        }
+<style>
+*{
+    box-sizing:border-box;
+}
 
-        .container {
-            max-width: 600px;
-            margin: 30px auto;
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-        }
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f2f4f7;
+}
 
-        h1 {
-            text-align: center;
-            margin-bottom: 25px;
-        }
+.container{
+    max-width:650px;
+    margin:30px auto;
+    padding:20px;
+}
 
-        h2 {
-            margin-top: 0;
-        }
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 4px 20px rgba(0,0,0,.12);
+}
 
-        label {
-            display: block;
-            margin-top: 15px;
-            margin-bottom: 6px;
-            font-weight: bold;
-        }
+h1{
+    text-align:center;
+    margin-bottom:25px;
+}
 
-        input,
-        textarea,
-        select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 7px;
-            font-size: 15px;
-        }
+h2{
+    margin-top:0;
+}
 
-        textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
+label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:6px;
+    font-weight:bold;
+}
 
-        button {
-            width: 100%;
-            padding: 13px;
-            margin-top: 20px;
-            border: none;
-            border-radius: 7px;
-            background: #111;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-        }
+input,select,textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:7px;
+    font-size:15px;
+}
 
-        button:hover {
-            opacity: 0.9;
-        }
+textarea{
+    min-height:100px;
+}
 
-        .logout {
-            background: #d32f2f;
-            margin-bottom: 20px;
-        }
+button{
+    width:100%;
+    padding:13px;
+    margin-top:20px;
+    border:0;
+    border-radius:7px;
+    background:#111;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
 
-        .message {
-            text-align: center;
-            margin-top: 15px;
-            font-weight: bold;
-        }
+.logout{
+    background:#d32f2f;
+}
 
-        #adminPanel {
-            display: none;
-        }
+.message{
+    text-align:center;
+    margin-top:15px;
+    font-weight:bold;
+}
 
-        .product-list {
-            margin-top: 30px;
-        }
+#adminPanel{
+    display:none;
+}
 
-        .product-item {
-            padding: 15px;
-            margin-top: 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background: #fafafa;
-        }
-    </style>
+.product{
+    border:1px solid #ddd;
+    padding:15px;
+    margin-top:12px;
+    border-radius:8px;
+    background:#fafafa;
+}
+
+.delete{
+    background:#d32f2f;
+}
+
+.edit{
+    background:#1976d2;
+}
+</style>
 </head>
 
 <body>
 
 <div class="container">
 
-    <h1>Eyakub Shop Admin</h1>
+<div class="card">
 
-    <!-- LOGIN -->
-    <div id="loginPanel">
+<h1>Eyakub Shop Admin</h1>
 
-        <h2>Admin Login</h2>
+<!-- LOGIN -->
 
-        <label>Username</label>
-        <input type="text" id="username" placeholder="Username">
+<div id="loginPanel">
 
-        <label>Password</label>
-        <input type="password" id="password" placeholder="Password">
+<h2>Admin Login</h2>
 
-        <button onclick="login()">Login</button>
+<label>Username</label>
+<input type="text" id="username" placeholder="Enter username">
 
-        <div id="loginMessage" class="message"></div>
+<label>Password</label>
+<input type="password" id="password" placeholder="Enter password">
 
-    </div>
+<button onclick="login()">Login</button>
+
+<div id="loginMessage" class="message"></div>
+
+</div>
 
 
-    <!-- ADMIN PANEL -->
-    <div id="adminPanel">
+<!-- ADMIN PANEL -->
 
-        <button class="logout" onclick="logout()">Logout</button>
+<div id="adminPanel">
 
-        <h2>Add New Product</h2>
+<button class="logout" onclick="logout()">Logout</button>
 
-        <form id="productForm">
+<h2>Add Product</h2>
 
-            <label>Product Name</label>
-            <input type="text" id="productName" placeholder="Men's Running Shoes" required>
+<label>Product Name</label>
+<input type="text" id="name" placeholder="Men's Running Shoes">
 
-            <label>Category</label>
-            <select id="category" required>
-                <option value="">Select Category</option>
-                <option value="Men's Shoes">Men's Shoes</option>
-                <option value="Women's Shoes">Women's Shoes</option>
-                <option value="Bags">Bags</option>
-                <option value="Clothing">Clothing</option>
-                <option value="Accessories">Accessories</option>
-                <option value="Cosmetics">Cosmetics</option>
-                <option value="Electronics">Electronics</option>
-            </select>
+<label>Category</label>
 
-            <label>Price (৳)</label>
-            <input type="number" id="price" placeholder="1500" required>
+<select id="category">
 
-            <label>Discount Price (৳)</label>
-            <input type="number" id="discountPrice" placeholder="1200">
+<option value="">Select Category</option>
 
-            <label>Product Image URL</label>
-            <input type="url" id="image" placeholder="https://example.com/shoe.jpg">
+<option>Men's Shoes</option>
+<option>Women's Shoes</option>
+<option>Bags</option>
+<option>Clothing</option>
+<option>Accessories</option>
+<option>Cosmetics</option>
+<option>Electronics</option>
 
-            <label>Description</label>
-            <textarea id="description" placeholder="Product details লিখুন..."></textarea>
+</select>
 
-            <button type="submit">Add Product</button>
+<label>Price (৳)</label>
+<input type="number" id="price" placeholder="1500">
 
-        </form>
+<label>Discount Price (৳)</label>
+<input type="number" id="discount" placeholder="1200">
 
-        <div id="productMessage" class="message"></div>
+<label>Image URL</label>
+<input type="text" id="image" placeholder="https://example.com/image.jpg">
 
-        <div class="product-list">
-            <h2>Products</h2>
-            <div id="productList"></div>
-        </div>
+<label>Description</label>
+<textarea id="description" placeholder="Product details"></textarea>
 
-    </div>
+<button onclick="addProduct()">Add Product</button>
+
+<div id="productMessage" class="message"></div>
+
+<hr style="margin:30px 0">
+
+<h2>Products</h2>
+
+<div id="products"></div>
+
+</div>
+
+</div>
 
 </div>
 
 
 <script>
 
-    // Basic Admin Login
-    const ADMIN_USERNAME = "eyakubadmin";
-    const ADMIN_PASSWORD = "Eyakub@2026";
+const USERNAME = "eyakubadmin";
+const PASSWORD = "Eyakub@2026";
 
 
-    function login() {
+function login(){
 
-        const username = document.getElementById("username").value;
-        const password = document.getElementById("password").value;
-        const message = document.getElementById("loginMessage");
+    const username =
+        document.getElementById("username").value;
 
-        if (
+    const password =
+        document.getElementById("password").value;
+
+    if(username === USERNAME && password === PASSWORD){
+
+        localStorage.setItem(
+            "eyakubAdmin",
+            "true"
+        );
+
+        document.getElementById("loginPanel").style.display="none";
+
+        document.getElementById("adminPanel").style.display="block";
+
+        showProducts();
+
+    }else{
+
+        document.getElementById("loginMessage").style.color="red";
+
+        document.getElementById("loginMessage").innerText =
+            "Wrong Username or Password!";
+
+    }
+
+}
+
+
+function logout(){
+
+    localStorage.removeItem("eyakubAdmin");
+
+    document.getElementById("adminPanel").style.display="none";
+
+    document.getElementById("loginPanel").style.display="block";
+
+}
+
+
+function addProduct(){
+
+    const name =
+        document.getElementById("name").value;
+
+    const category =
+        document.getElementById("category").value;
+
+    const price =
+        document.getElementById("price").value;
+
+    const discount =
+        document.getElementById("discount").value;
+
+    const image =
+        document.getElementById("image").value;
+
+    const description =
+        document.getElementById("description").value;
+
+
+    if(!name || !category || !price){
+
+        alert("Product Name, Category এবং Price দিন");
+
+        return;
+    }
+
+
+    const product = {
+
+        id:Date.now(),
+
+        name:name,
+
+        category:category,
+
+        price:price,
+
+        discount:discount,
+
+        image:image,
+
+        description:description
+
+    };
+
+
+    let products =
+        JSON.parse(
+            localStorage.getItem("eyakubProducts")
+        ) || [];
+
+
+    products.push(product);
+
+
+    localStorage.setItem(
+        "eyakubProducts",
+        JSON.stringify(products)
+    );
+
+
+    document.getElementById("productMessage").style.color="green";
+
+    document.getElementById("productMessage").innerText =
+        "Product Added Successfully!";
+
+
+    document.getElementById("name").value="";
+    document.getElementById("category").value="";
+    document.getElementById("price").value="";
+    document.getElementById("discount").value="";
+    document.getElementById("image").value="";
+    document.getElementById("description").value="";
+
+
+    showProducts();
+
+}
+
+
+function showProducts(){
+
+    const box =
+        document.getElementById("products");
+
+    const products =
+        JSON.parse(
+            localStorage.getItem("eyakubProducts")
+        ) || [];
+
+
+    box.innerHTML="";
+
+
+    if(products.length === 0){
+
+        box.innerHTML =
+            "<p>এখনো কোনো Product Add করা হয়নি।</p>";
+
+        return;
+
+    }
+
+
+    products.forEach(function(product){
+
+        const div =
+            document.createElement("div");
+
+        div.className="product";
+
+
+        div.innerHTML = `
+
+        <strong>${product.name}</strong>
+
+        <br>
+
+        Category: ${product.category}
+
+        <br>
+
+        Price: ৳${product.price}
+
+        <br>
+
+        Discount Price: ৳${product.discount || "N/A"}
+
+        <br><br>
+
+        <button class="delete"
+        onclick="deleteProduct(${product.id})">
+
+        Delete Product
+
+        </button>
+
+        `;
+
+
+        box.appendChild(div);
+
+    });
+
+}
+
+
+function deleteProduct(id){
+
+    let products =
+        JSON.parse(
+            localStorage.getItem("eyakubProducts")
+        ) || [];
+
+
+    products =
+        products.filter(
+            product => product.id !== id
+        );
+
+
+    localStorage.setItem(
+        "eyakubProducts",
+        JSON.stringify(products)
+    );
+
+
+    showProducts();
+
+}
+
+
+if(
+    localStorage.getItem("eyakubAdmin")
+    === "true"
+){
+
+    document.getElementById("loginPanel").style.display="none";
+
+    document.getElementById("adminPanel").style.display="block";
+
+    showProducts();
+
+}
+
+</script>
+
+</body>
+</html>
